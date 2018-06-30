@@ -15,6 +15,8 @@ namespace ArrayExtensions
         /// <param name="digit">Digit to be filtered by.</param>
         /// <param name="array">Array to be filtered.</param>
         /// <returns>Filtered array.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when array is null.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when digit is incorrect.</exception>
         public static int[] FilterDigit(int digit, params int[] array)
         {
             if (array == null)
