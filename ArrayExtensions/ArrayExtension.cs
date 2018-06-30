@@ -14,7 +14,7 @@ namespace ArrayExtensions
         /// </summary>
         /// <param name="digit">Digit to be filtered by.</param>
         /// <param name="array">Array to be filtered.</param>
-        /// <returns></returns>
+        /// <returns>Filtered array.</returns>
         public static int[] FilterDigit(int digit, params int[] array)
         {
             if (array == null)
@@ -47,7 +47,7 @@ namespace ArrayExtensions
         /// </summary>
         /// <param name="number">Number in which the search is performed.</param>
         /// <param name="digit">Digit to be found.</param>
-        /// <returns></returns>
+        /// <returns>True, if the number contains the digit; otherwise, false.</returns>
         private static bool IsDigit(int number, int digit)
         {
             while (number != 0)
