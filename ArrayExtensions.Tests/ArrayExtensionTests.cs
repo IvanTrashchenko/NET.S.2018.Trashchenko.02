@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ArrayExtensions.Tests
 {
+    using System.Diagnostics;
+
     [TestClass]
     public class ArrayExtensionTests
     {
@@ -15,7 +16,7 @@ namespace ArrayExtensions.Tests
 
             int[] expected = { 7, 7, 70, 17 };
 
-            int[] actual = ArrayExtension.FilterDigit(digit, array);
+            int[] actual = ArrayExtension.FilterDigit(digit, new Division(), array);
 
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -28,7 +29,7 @@ namespace ArrayExtensions.Tests
 
             int[] expected = { 7, -7, -70, 17 };
 
-            int[] actual = ArrayExtension.FilterDigit(digit, array);
+            int[] actual = ArrayExtension.FilterDigit(digit, new Division(), array);
 
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -41,7 +42,7 @@ namespace ArrayExtensions.Tests
 
             int[] expected = { };
 
-            int[] actual = ArrayExtension.FilterDigit(digit, array);
+            int[] actual = ArrayExtension.FilterDigit(digit, new Division(), array);
 
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -52,7 +53,7 @@ namespace ArrayExtensions.Tests
             int[] array = null;
             int digit = 7;
 
-            int[] actual = ArrayExtension.FilterDigit(digit, array);
+            int[] actual = ArrayExtension.FilterDigit(digit, new Division(), array);
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentOutOfRangeException))]
@@ -61,7 +62,34 @@ namespace ArrayExtensions.Tests
             int[] array = { 7, 1, 2, 3, 4, 5, 6, -7, 68, 69, -70, 15, 17 };
             int digit = -7;
 
-            int[] actual = ArrayExtension.FilterDigit(digit, array);
+            int[] actual = ArrayExtension.FilterDigit(digit, new Division(), array);
+        }
+
+        [TestMethod]
+        public void Comparison_Of_ComputationalSpeed_Of_Algorithms()
+        {
+            /*Stopwatch watch = Stopwatch.StartNew();
+            int resultNumber = FindNextBiggerNumber(number);
+            watch.Stop();
+            return new Tuple<int, long>(resultNumber, watch.ElapsedMilliseconds);*/
+
+            int[] array = { 7, 1, 2, 3, 443, 5, 6, 7, 68, 69, 70, 15, 17, -23, 0, 23, 3456, 967, 111, 3456, 7, 321, -2344, -27 };
+            int digit = 7;
+
+            int[] expected = { 7, 7, 70, 17, 967, 7, -27 };
+
+            Stopwatch watch1 = Stopwatch.StartNew();
+            int[] actual = ArrayExtension.FilterDigit(digit, new Division(), array);
+            watch1.Stop();
+
+            Stopwatch watch2 = Stopwatch.StartNew();
+            actual = ArrayExtension.FilterDigit(digit, new StringAlgorithm(), array);
+            watch2.Stop();
+
+            Debug.WriteLine($"Time elapsed for division algorithm: {watch1.Elapsed} milliseconds.");
+            Debug.WriteLine($"Time elapsed for string algorithm: {watch2.Elapsed} milliseconds.");
+
+            CollectionAssert.AreEqual(expected, actual);
         }
     }
 }

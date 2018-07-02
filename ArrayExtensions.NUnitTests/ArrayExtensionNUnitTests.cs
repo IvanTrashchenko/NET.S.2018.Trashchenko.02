@@ -11,19 +11,19 @@ namespace ArrayExtensions.NUnitTests
         [TestCase(7, 1, ExpectedResult = new int[] { })]
         public int[] FilterDigitTest(int digit, params int[] array)
         {
-            return ArrayExtension.FilterDigit(digit, array);
+            return ArrayExtension.FilterDigit(digit, new Division(), array);
         }
 
         [TestCase(7, null)]
         public void FilterDigitTest_ThrowArgumentNullException(int digit, int[] array)
         {
-            Assert.Throws<ArgumentNullException>(() => ArrayExtension.FilterDigit(digit, array));
+            Assert.Throws<ArgumentNullException>(() => ArrayExtension.FilterDigit(digit, new Division(), array));
         }
 
         [TestCase(-7, 7, 1, 2, 3, 4, 5, 6, -7, 68, 69, -70, 15, 17)]
         public void FilterDigitTest_ThrowArgumentOutOfRangeException(int digit, params int[] array)
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => ArrayExtension.FilterDigit(digit, array));
+            Assert.Throws<ArgumentOutOfRangeException>(() => ArrayExtension.FilterDigit(digit, new Division(), array));
         }
     }
 }
