@@ -82,7 +82,7 @@ namespace ArrayExtensions.Tests
             actual = ArrayExtension.FilterDigit(digit, new StringAlgorithm(), array);
             watch2.Stop();
 
-            Debug.WriteLine($"Time elapsed for division algorithm: {watch1.Elapsed} milliseconds.");
+            Debug.WriteLine($"Time elapsed for division algorithm: {watch1.Elapsed} milliseconds."); //takes longer!
             Debug.WriteLine($"Time elapsed for string algorithm: {watch2.Elapsed} milliseconds.");
 
             CollectionAssert.AreEqual(expected, actual);
