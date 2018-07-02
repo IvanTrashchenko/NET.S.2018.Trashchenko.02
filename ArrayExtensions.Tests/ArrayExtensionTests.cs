@@ -68,11 +68,7 @@ namespace ArrayExtensions.Tests
         [TestMethod]
         public void Comparison_Of_ComputationalSpeed_Of_Algorithms()
         {
-            /*Stopwatch watch = Stopwatch.StartNew();
-            int resultNumber = FindNextBiggerNumber(number);
-            watch.Stop();
-            return new Tuple<int, long>(resultNumber, watch.ElapsedMilliseconds);*/
-
+            
             int[] array = { 7, 1, 2, 3, 443, 5, 6, 7, 68, 69, 70, 15, 17, -23, 0, 23, 3456, 967, 111, 3456, 7, 321, -2344, -27 };
             int digit = 7;
 
