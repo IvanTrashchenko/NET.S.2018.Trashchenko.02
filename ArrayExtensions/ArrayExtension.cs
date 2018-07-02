@@ -21,12 +21,12 @@ namespace ArrayExtensions
         {
             if (array == null)
             {
-                throw new ArgumentNullException(nameof(array));
+                throw new ArgumentNullException($"{array} cannot be null.");
             }
 
             if (digit < 0 || digit > 9)
             {
-                throw new ArgumentOutOfRangeException(nameof(digit));
+                throw new ArgumentOutOfRangeException($"{digit} is out of range.");
             }
 
             List<int> list = new List<int>();

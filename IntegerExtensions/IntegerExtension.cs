@@ -23,17 +23,17 @@ namespace IntegerExtensions
         {
             if (i < 0 || i > MaxBitValue)
             {
-                throw new ArgumentOutOfRangeException(nameof(i));
+                throw new ArgumentOutOfRangeException($"{i} is out of range.");
             }
 
             if (j < 0 || j > MaxBitValue)
             {
-                throw new ArgumentOutOfRangeException(nameof(j));
+                throw new ArgumentOutOfRangeException($"{j} is out of range.");
             }
 
             if (j < i)
             {
-                throw new ArgumentException($"{nameof(i)} is greater than {nameof(j)}.");
+                throw new ArgumentException($"{i} is greater than {j}.");
             }
 
             int mask1 = (1 << (j - i + 1)) - 1;
