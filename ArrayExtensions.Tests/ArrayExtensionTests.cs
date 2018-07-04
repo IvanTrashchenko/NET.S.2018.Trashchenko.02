@@ -64,28 +64,5 @@ namespace ArrayExtensions.Tests
 
             int[] actual = ArrayExtension.FilterDigit(digit, new Division(), array);
         }
-
-        [TestMethod]
-        public void Comparison_Of_ComputationalSpeed_Of_Algorithms()
-        {
-            
-            int[] array = { 7, 1, 2, 3, 443, 5, 6, 7, 68, 69, 70, 15, 17, -23, 0, 23, 3456, 967, 111, 3456, 7, 321, -2344, -27 };
-            int digit = 7;
-
-            int[] expected = { 7, 7, 70, 17, 967, 7, -27 };
-
-            Stopwatch watch1 = Stopwatch.StartNew();
-            int[] actual = ArrayExtension.FilterDigit(digit, new Division(), array);
-            watch1.Stop();
-
-            Stopwatch watch2 = Stopwatch.StartNew();
-            actual = ArrayExtension.FilterDigit(digit, new StringAlgorithm(), array);
-            watch2.Stop();
-
-            Debug.WriteLine($"Time elapsed for division algorithm: {watch1.Elapsed}."); //takes longer!
-            Debug.WriteLine($"Time elapsed for string algorithm: {watch2.Elapsed}.");
-
-            CollectionAssert.AreEqual(expected, actual);
-        }
     }
 }
